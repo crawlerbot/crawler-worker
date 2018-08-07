@@ -1,9 +1,9 @@
 package io.github.crawlerbot.messaging;
 
-import io.github.crawlerbot.CommandLiner;
 import io.github.crawlerbot.exceptions.NotSupportBrowserException;
 import io.github.crawlerbot.models.Channel;
 import io.github.crawlerbot.models.CrawlLine;
+import io.github.crawlerbot.service.CommandLiner;
 import io.github.crawlerbot.service.Crawler;
 import io.github.crawlerbot.service.DataTransformer;
 import io.github.crawlerbot.service.FileStoreService;

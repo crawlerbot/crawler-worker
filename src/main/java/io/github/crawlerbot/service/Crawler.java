@@ -1,7 +1,6 @@
 package io.github.crawlerbot.service;
 
 import com.google.common.base.Function;
-import io.github.crawlerbot.CommandLiner;
 import io.github.crawlerbot.enumerations.Action;
 import io.github.crawlerbot.enumerations.BrowserOS;
 import io.github.crawlerbot.enumerations.SeleniumActionGetContent;
@@ -22,11 +21,11 @@ import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
+
 
 
 public class Crawler implements CrawlerEngine {
@@ -39,6 +38,7 @@ public class Crawler implements CrawlerEngine {
     private BrowserHost browserHost;
     private BrowserOS browserOS;
     private CrawlerResult crawlerResult;
+
     private CommandLiner commandLiner;
 
     public Crawler(Channel channel, CommandLiner commandLiner) {
