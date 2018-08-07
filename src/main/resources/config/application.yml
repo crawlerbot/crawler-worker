@@ -81,7 +81,7 @@ management:
 
 spring:
     application:
-        name: CrawlerWorker
+        name: worker
     messages:
         basename: i18n/messages
     mvc:
@@ -121,11 +121,11 @@ simlife:
         #allow-credentials: true
         #max-age: 1800
     mail:
-        from: CrawlerWorker@localhost
+        from: worker@localhost
     swagger:
         default-include-pattern: /api/.*
-        title: CrawlerWorker API
-        description: CrawlerWorker API documentation
+        title: worker API
+        description: worker API documentation
         version: 0.0.1
         terms-of-service-url:
         contact-name:
