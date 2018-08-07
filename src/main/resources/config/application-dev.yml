@@ -40,23 +40,40 @@ spring:
     cloud:
         stream:
             kafka:
+                streams:
+                    binder:
+                        configuration:
+                            commit:
+                                interval:
+                                    ms: 1000
+
+                bindings:
+                    output:
+                        producer:
+                          configuration:
+                            max:
+                              block:
+                                ms: 5000
                 binder:
-                    brokers: localhost
-                    zk-nodes: localhost
+                    brokers: 140.203.155.14
+                    zk-nodes: 140.203.155.14
+
             bindings:
-                output:
-                    destination: topic-simlife
+                singleOutput:
+                    contentType: application/json
+                messageChannel:
+                    destination: greetings
+                    content-type: application/json
+                subscribableChannel:
+                    destination: greetings
     data:
         mongodb:
-            uri: mongodb://localhost:27017
+            uri: mongodb://140.203.155.14:27017
             database: CrawlerWorker
         elasticsearch:
-            cluster-name:
-            cluster-nodes: localhost:9300
-            properties:
-                path:
-                    logs: target/elasticsearch/log
-                    data: target/elasticsearch/data
+            cluster-name: elasticsearch
+            cluster-nodes: 140.203.155.14:9300
+
     mail:
         host: localhost
         port: 25

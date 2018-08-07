@@ -30,6 +30,8 @@ eureka:
         lease-expiration-duration-in-seconds: 10
         status-page-url-path: ${management.endpoints.web.base-path}/info
         health-check-url-path: ${management.endpoints.web.base-path}/health
+        prefer-ip-address: false
+        ip-address: 140.203.155.19
         metadata-map:
             zone: primary # This is needed for the load balancer
             profile: ${spring.profiles.active}
