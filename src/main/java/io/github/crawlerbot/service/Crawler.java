@@ -1,8 +1,8 @@
 package io.github.crawlerbot.service;
 
 import com.google.common.base.Function;
+import io.github.crawlerbot.domain.enumeration.BrowserOS;
 import io.github.crawlerbot.enumerations.Action;
-import io.github.crawlerbot.enumerations.BrowserOS;
 import io.github.crawlerbot.enumerations.SeleniumActionGetContent;
 import io.github.crawlerbot.exceptions.NotSupportBrowserException;
 import io.github.crawlerbot.models.*;
@@ -88,6 +88,9 @@ public class Crawler implements CrawlerEngine {
             String os = "mac";
             if (browserOS.equals(BrowserOS.UBUNTU)) {
                 os = "linux";
+            }
+            if (browserOS.equals(BrowserOS.MAC)) {
+                os = "mac";
             }
             if (browserOS.equals(BrowserOS.WINDOWS)) {
                 os = "window";

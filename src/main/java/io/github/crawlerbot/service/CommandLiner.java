@@ -1,21 +1,18 @@
 package io.github.crawlerbot.service;
 
-import io.github.crawlerbot.enumerations.BrowserOS;
+
+import io.github.crawlerbot.domain.enumeration.BrowserOS;
+import io.github.crawlerbot.domain.enumeration.MessageAction;
+import io.github.crawlerbot.domain.enumeration.MessageObject;
 import io.github.crawlerbot.exceptions.NotSupportBrowserException;
-import io.github.crawlerbot.messaging.MessageAction;
-import io.github.crawlerbot.messaging.MessageObject;
 import io.github.crawlerbot.messaging.MessagePayLoad;
 import io.github.crawlerbot.messaging.ProducerChannel;
 import io.github.crawlerbot.models.Channel;
 import io.github.crawlerbot.models.CrawlLine;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.messaging.MessageChannel;
 import org.springframework.messaging.support.MessageBuilder;
-import org.springframework.scheduling.annotation.Scheduled;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.net.MalformedURLException;
@@ -116,7 +113,7 @@ public class CommandLiner {
         MessagePayLoad messagePayLoad = new MessagePayLoad();
         messagePayLoad.setMessage(messageBody);
         // need to be reractor
-        messagePayLoad.setBrowserOS(BrowserOS.MAC);
+        messagePayLoad.setBrowserOS(messagePayLoad.getBrowserOS());
         messagePayLoad.setMessageAction(MessageAction.CRAWL_LINE);
         messagePayLoad.setMessageObject(MessageObject.CRAWLLINE);
         channel.send(MessageBuilder.withPayload(messagePayLoad).build());

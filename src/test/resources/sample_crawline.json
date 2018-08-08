@@ -1,0 +1,162 @@
+{
+    "id": null,
+    "link": {
+        "id": null,
+        "url": "https://tiki.vn/dien-thoai-may-tinh-bang/c1789?src=mega-menu",
+        "scrapeDataId": null,
+        "scrapeId": null,
+        "currentLevel": 0,
+        "scrapeUrl": null,
+        "parentUrl": null,
+        "scrapeResultId": null,
+        "scrapeResultPath": null,
+        "scrapeResultContentType": null,
+        "crawlStatus": null,
+        "internalUrl": null,
+        "html": null,
+        "xml": null,
+        "json": null,
+        "scrapeREsultContentType": null
+    },
+    "channel": {
+        "id": "5b339ed855db0c0b054ddc35",
+        "name": "Điện Thoại - Máy Tính Bảng",
+        "siteDomain": "tiki.vn",
+        "siteUrl": "https://tiki.vn",
+        "url": "https://tiki.vn/dien-thoai-may-tinh-bang/c1789?src=mega-menu",
+        "contentType": "HTML",
+        "schedule": null,
+        "scheduleTimeZone": null,
+        "totalLevel": 2,
+        "archiveLevel": 2,
+        "unlimitedLevel": null,
+        "fetchEngine": "SELENIUM",
+        "category": "Điện Thoại - Máy Tính Bảng",
+        "tag": "#Điện Thoại, #Máy Tính Bảng",
+        "categorySlug": "en-us-world",
+        "tagSlug": "#Điện Thoại",
+        "countryCode": "VN",
+        "languageCode": "vn-vi",
+        "targetQueueChannel": "index.tiki.product",
+        "topics": null,
+        "topicSlugs": null,
+        "postType": null,
+        "rankingCountry": 1,
+        "logo": "https://tiki.vn/favicon.ico",
+        "siteName": "Điện Thoại - Máy Tính Bảng",
+        "channelType": "CHANNEL_FOR_GETTING_FEED",
+        "levelOneFetchEngine": "SELENIUM",
+        "levelTwoFetchEngine": "SELENIUM",
+        "levelThreeFetchEngine": null,
+        "levelFourFetchEngine": null,
+        "levelOneContentType": "HTML",
+        "levelTwoContentType": "HTML",
+        "levelThreeContentType": null,
+        "levelFourContentType": null,
+        "allowExternalUrl": null,
+        "outers": [],
+        "mappings": [],
+        "configGroups": [
+            {
+                "id": "5b339d7855db0c0b054ddc34",
+                "name": "tiki.vn-get-product-level1",
+                "host": "tiki.vn",
+                "currentLevel": 1,
+                "expectResultType": "OBJECT",
+                "mappings": [
+                    {
+                        "id": "5b339c4155db0c0b054ddc32",
+                        "name": "price",
+                        "selector": "#span-price",
+                        "host": "tiki.vn",
+                        "configName": "tiki product price(tiki.vn) level 1",
+                        "attr": "text",
+                        "dataType": "STRING"
+                    },
+                    {
+                        "id": "5b339c4155db0c0b054ddc34",
+                        "name": "name",
+                        "selector": "#product-name",
+                        "host": "tiki.vn",
+                        "configName": "tiki product name(tiki.vn) level 1",
+                        "attr": "text",
+                        "dataType": "STRING"
+                    },
+                    {
+                        "id": "5b339c4155db0c0b054ddc325",
+                        "name": "brand",
+                        "selector": ".item-brand",
+                        "host": "tiki.vn",
+                        "configName": "tiki product brand(tiki.vn) level 1",
+                        "attr": "text",
+                        "dataType": "STRING"
+                    }
+                ]
+            },
+            {
+                "id": "5b339d2d55db0c0b054ddc33",
+                "name": "youtube.com-getfeed-level0",
+                "host": "youtube.com",
+                "currentLevel": 0,
+                "expectResultType": "ARRAY",
+                "mappings": [
+                    {
+                        "id": "5b339ba455db0c0b054ddc31",
+                        "name": "url",
+                        "selector": ".product-box-list a",
+                        "host": "tiki.vn",
+                        "configName": "tiki product name (tiki.vn) level 0",
+                        "attr": "abs:href",
+                        "dataType": "STRING"
+                    }
+                ]
+            }
+        ],
+        "actions": [
+            {
+                "id": "13838383",
+                "url": "https://youtube.com",
+                "domain": "youtube.com",
+                "host": "youtube.com",
+                "level": 0,
+                "selector": "a.next",
+                "selectorAttr": "",
+                "action": "CLICK",
+                "totalActions": 2,
+                "getContent": "EACH_ACTION"
+            }
+        ],
+        "targetGroups": []
+    },
+    "data": [
+        {
+            "url": [
+                "https://tiki.vn/dien-thoai-huawei-p20-pro-hang-chinh-hang-p2063929.html?src=category-page",
+                "https://tiki.vn/dien-thoai-xiaomi-redmi-s2-32gb-3gb-hang-chinh-hang-p2361259.html?src=category-page",
+                "https://tiki.vn/dien-thoai-xiaomi-mi-8-128gb-6gb-hang-chinh-hang-p2408753.html?src=category-page",
+                "https://tiki.vn/store-bao-bi-bbn?src=banner_native_category_1789",
+                "https://tiki.vn/dien-thoai-xiaomi-mi-mix-2-black-hang-chinh-hang-p848363.html?src=category-page",
+                "https://tiki.vn/dien-thoai-iphone-6-32gb-vn-a-vang-dong-hang-chinh-hang-p684632.html?src=category-page",
+                "https://tiki.vn/dien-thoai-samsung-galaxy-j7-prime-hang-chinh-hang-p254842.html?src=category-page",
+                "https://tiki.vn/ipad-wifi-32gb-new-2018-hang-chinh-hang-p1929161.html?src=category-page",
+                "https://tiki.vn/dien-thoai-iphone-x-64gb-vn-a-hang-chinh-hang-p938786.html?src=category-page",
+                "https://tiki.vn/dien-thoai-iphone-6s-plus-32gb-vn-a-hang-chinh-hang-p1823081.html?src=category-page",
+                "https://tiki.vn/dien-thoai-blackberry-key2-hang-chinh-hang-p2570827.html?src=category-page",
+                "https://tiki.vn/dien-thoai-samsung-galaxy-j7-plus-hang-chinh-hang-p988558.html?src=category-page",
+                "https://tiki.vn/may-doc-sach-kindle-paperwhite-2018-7th-den-p840390.html?src=category-page",
+                "https://tiki.vn/dien-thoai-huawei-nova-3e-hang-chinh-hang-p1675995.html?src=category-page",
+                "https://tiki.vn/dien-thoai-motorola-moto-z2-play-hang-chinh-hang-p724161.html?src=category-page",
+                "https://tiki.vn/freetel-musashi-hang-chinh-hang-p623740.html?src=category-page",
+                "https://tiki.vn/dien-thoai-oppo-f3-hang-chinh-hang-p634303.html?src=category-page",
+                "https://tiki.vn/dien-thoai-samsung-galaxy-j2-prime-hang-chinh-hang-p301758.html?src=category-page",
+                "https://tiki.vn/may-doc-sach-kindle-2018-8th-den-p841240.html?src=category-page",
+                "https://tiki.vn/dien-thoai-samsung-galaxy-j3-pro-hang-chinh-hang-p735831.html?src=category-page",
+                "https://tiki.vn/dien-thoai-xiaomi-mi-mix-2s-64gb-6gb-hang-chinh-hang-p1704523.html?src=category-page",
+                "https://tiki.vn/dien-thoai-asus-zenfone-max-plus-m1-zb570tl-32gb-3gb-den-hang-chinh-hang-p1312585.html?src=category-page",
+                "https://tiki.vn/bo-dien-thoai-xiaomi-redmi-note-5-pro-64gb-4gb-mieng-dan-cuong-luc-op-lung-hang-nhap-khau-p1747135.html?src=category-page",
+                "https://tiki.vn/dien-thoai-samsung-galaxy-note-8-hang-chinh-hang-p832108.html?src=category-page"
+            ]
+        }
+    ],
+    "fileUrl": null
+}

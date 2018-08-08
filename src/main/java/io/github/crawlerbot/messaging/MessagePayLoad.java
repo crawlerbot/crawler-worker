@@ -1,6 +1,9 @@
 package io.github.crawlerbot.messaging;
 
-import io.github.crawlerbot.enumerations.BrowserOS;
+
+import io.github.crawlerbot.domain.enumeration.BrowserOS;
+import io.github.crawlerbot.domain.enumeration.MessageAction;
+import io.github.crawlerbot.domain.enumeration.MessageObject;
 
 public class MessagePayLoad {
     private String message;

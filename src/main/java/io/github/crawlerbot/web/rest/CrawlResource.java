@@ -2,6 +2,8 @@ package io.github.crawlerbot.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import io.github.crawlerbot.domain.Crawl;
+import io.github.crawlerbot.messaging.MessagePayLoad;
+import io.github.crawlerbot.service.CommandLiner;
 import io.github.crawlerbot.service.CrawlService;
 import io.github.crawlerbot.web.rest.errors.BadRequestAlertException;
 import io.github.crawlerbot.web.rest.util.HeaderUtil;
@@ -39,8 +41,11 @@ public class CrawlResource {
 
     private final CrawlService crawlService;
 
-    public CrawlResource(CrawlService crawlService) {
+    private final CommandLiner commandLiner;
+
+    public CrawlResource(CrawlService crawlService, CommandLiner commandLiner) {
         this.crawlService = crawlService;
+        this.commandLiner = commandLiner;
     }
 
     /**
@@ -57,7 +62,13 @@ public class CrawlResource {
         if (crawl.getId() != null) {
             throw new BadRequestAlertException("A new crawl cannot already have an ID", ENTITY_NAME, "idexists");
         }
+
         Crawl result = crawlService.save(crawl);
+        MessagePayLoad messagePayLoad = new MessagePayLoad();
+        messagePayLoad.setMessage(result.getContent());
+        messagePayLoad.setBrowserOS(result.getBrowserOS());
+        messagePayLoad.setMessageAction(result.getMessageAction());
+        commandLiner.consume(messagePayLoad);
 
         return ResponseEntity.created(new URI("/api/crawls/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))

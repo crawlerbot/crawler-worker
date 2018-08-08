@@ -5,6 +5,7 @@ import io.github.crawlerbot.CrawlerWorkerApp;
 import io.github.crawlerbot.domain.Crawl;
 import io.github.crawlerbot.repository.CrawlRepository;
 import io.github.crawlerbot.repository.search.CrawlSearchRepository;
+import io.github.crawlerbot.service.CommandLiner;
 import io.github.crawlerbot.service.CrawlService;
 import io.github.crawlerbot.web.rest.errors.ExceptionTranslator;
 
@@ -62,7 +63,7 @@ public class CrawlResourceIntTest {
     @Autowired
     private CrawlRepository crawlRepository;
 
-    
+
 
     @Autowired
     private CrawlService crawlService;
@@ -83,6 +84,8 @@ public class CrawlResourceIntTest {
 
     @Autowired
     private ExceptionTranslator exceptionTranslator;
+    @Autowired
+    private CommandLiner commandLiner;
 
     private MockMvc restCrawlMockMvc;
 
@@ -91,7 +94,7 @@ public class CrawlResourceIntTest {
     @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        final CrawlResource crawlResource = new CrawlResource(crawlService);
+        final CrawlResource crawlResource = new CrawlResource(crawlService,commandLiner);
         this.restCrawlMockMvc = MockMvcBuilders.standaloneSetup(crawlResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setControllerAdvice(exceptionTranslator)
@@ -196,7 +199,7 @@ public class CrawlResourceIntTest {
             .andExpect(jsonPath("$.[*].messageObject").value(hasItem(DEFAULT_MESSAGE_OBJECT.toString())))
             .andExpect(jsonPath("$.[*].messageAction").value(hasItem(DEFAULT_MESSAGE_ACTION.toString())));
     }
-    
+
 
     @Test
     public void getCrawl() throws Exception {

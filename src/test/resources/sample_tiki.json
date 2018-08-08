@@ -1,0 +1,113 @@
+{
+    "id": "5b339ed855db0c0b054ddc35",
+    "url": "https://tiki.vn/dien-thoai-may-tinh-bang/c1789?src=mega-menu",
+    "contentType": "HTML",
+    "schedule": null,
+    "scheduleTimeZone": null,
+    "totalLevel": 1,
+    "archiveLevel": 1,
+    "unlimitedLevel": null,
+    "fetchEngine": "SELENIUM",
+    "category": "Điện Thoại - Máy Tính Bảng",
+    "tag": "#Điện Thoại, #Máy Tính Bảng",
+    "categorySlug": "en-us-world",
+    "tagSlug": "#Điện Thoại",
+    "countryCode": "VN",
+    "languageCode": "vn-vi",
+    "targetQueueChannel": "index.tiki.product",
+    "topics": null,
+    "topicSlugs": null,
+    "postType": "PRODUCT",
+    "rankingCountry": 1,
+    "logo": "https://tiki.vn/favicon.ico",
+    "siteName": "Điện Thoại - Máy Tính Bảng",
+    "channelType": "CHANNEL_FOR_GETTING_FEED",
+    "levelOneFetchEngine": "SELENIUM",
+    "levelTwoFetchEngine": "SELENIUM",
+    "levelThreeFetchEngine": null,
+    "levelFourFetchEngine": null,
+    "levelOneContentType": "HTML",
+    "levelTwoContentType": "HTML",
+    "levelThreeContentType": null,
+    "levelFourContentType": null,
+    "allowExternalUrl": null,
+    "targetChannel": "PUBLISHER",
+    "target": "PUBLISHER",
+    "name": "Điện Thoại - Máy Tính Bảng",
+    "siteDomain": "tiki.vn",
+    "siteUrl": "https://tiki.vn",
+    "outers": [],
+    "mappings": [],
+    "actions": [
+        {
+            "id": "13838383",
+            "url": "https://youtube.com",
+            "domain": "youtube.com",
+            "host": "youtube.com",
+            "level": 0,
+            "selector": "a.next",
+            "selectorAttr": "",
+            "action": "CLICK",
+            "getContent":"EACH_ACTION",
+            "totalActions": 2
+        }
+
+    ],
+    "configGroups": [
+        {
+            "id": "5b339d7855db0c0b054ddc34",
+            "name": "tiki.vn-get-product-level1",
+            "host": "tiki.vn",
+            "currentLevel": 1,
+            "expectResultType": "OBJECT",
+            "mappings": [
+                {
+                    "id": "5b339c4155db0c0b054ddc32",
+                    "name": "price",
+                    "selector": "#span-price",
+                    "host": "tiki.vn",
+                    "configName": "tiki product price(tiki.vn) level 1",
+                    "attr": "text",
+                    "dataType": "STRING"
+                },
+                {
+                    "id": "5b339c4155db0c0b054ddc34",
+                    "name": "name",
+                    "selector": "#product-name",
+                    "host": "tiki.vn",
+                    "configName": "tiki product name(tiki.vn) level 1",
+                    "attr": "text",
+                    "dataType": "STRING"
+                },
+                {
+                    "id": "5b339c4155db0c0b054ddc325",
+                    "name": "brand",
+                    "selector": ".item-brand",
+                    "host": "tiki.vn",
+                    "configName": "tiki product brand(tiki.vn) level 1",
+                    "attr": "text",
+                    "dataType": "STRING"
+                }
+            ]
+        },
+        {
+            "id": "5b339d2d55db0c0b054ddc33",
+            "name": "youtube.com-getfeed-level0",
+            "host": "youtube.com",
+            "currentLevel": 0,
+            "expectResultType": "ARRAY",
+            "mappings": [
+                {
+                    "id": "5b339ba455db0c0b054ddc31",
+                    "name": "url",
+                    "selector": ".product-box-list a",
+                    "host": "tiki.vn",
+                    "configName": "tiki product name (tiki.vn) level 0",
+                    "attr": "abs:href",
+                    "dataType": "STRING"
+                }
+            ]
+        }
+    ],
+    "targetGroups": []
+}

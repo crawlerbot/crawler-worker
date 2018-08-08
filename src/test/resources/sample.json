@@ -1,0 +1,121 @@
+{
+    "id": "5b339ed855db0c0b054ddc35",
+    "url": "https://www.youtube.com/channel/UCYfdidRxbB8Qhf0Nx7ioOYw",
+    "contentType": "HTML",
+    "schedule": null,
+    "scheduleTimeZone": null,
+    "totalLevel": 2,
+    "archiveLevel": 2,
+    "unlimitedLevel": null,
+    "fetchEngine": "SELENIUM",
+    "category": "World",
+    "tag": "#world",
+    "categorySlug": "en-us-world",
+    "tagSlug": "#world",
+    "countryCode": "US",
+    "languageCode": "en-us",
+    "targetQueueChannel": "index.youtube.video",
+    "topics": null,
+    "topicSlugs": null,
+    "postType": "VIDEO",
+    "rankingCountry": 1,
+    "logo": "https://yt3.ggpht.com/CTzucynXau0hYZBpNjx_vC2ehVNfbFvNXhMm1B75gSEgMzqMCfbKgyjKCOHfFzyzW-Nl_UJwWfqkN42k5w=s288-mo-c-c0xffffffff-rj-k-no",
+    "siteName": "News",
+    "channelType": "CHANNEL_FOR_GETTING_FEED",
+    "levelOneFetchEngine": "SELENIUM",
+    "levelTwoFetchEngine": "SELENIUM",
+    "levelThreeFetchEngine": null,
+    "levelFourFetchEngine": null,
+    "levelOneContentType": "HTML",
+    "levelTwoContentType": "HTML",
+    "levelThreeContentType": null,
+    "levelFourContentType": null,
+    "allowExternalUrl": null,
+    "targetChannel": "PUBLISHER",
+    "target": "PUBLISHER",
+    "name": "News",
+    "siteDomain": "youtube.com",
+    "siteUrl": "https://youtube.com",
+    "outers": [],
+    "mappings": [],
+    "actions": [
+        {
+            "id": "13838383",
+            "url": "https://youtube.com",
+            "domain": "youtube.com",
+            "host": "youtube.com",
+            "level": 0,
+            "selector": "",
+            "selectorAttr": "",
+            "action": "SCROLL",
+            "getContent":"DONE_ACTION",
+            "totalActions": 2
+        }
+    ],
+    "configGroups": [
+        {
+            "id": "5b339d7855db0c0b054ddc34",
+            "name": "youtube.com-get-feed-level1",
+            "host": "youtube.com",
+            "currentLevel": 1,
+            "expectResultType": "OBJECT",
+            "mappings": [
+                {
+                    "id": "5b339c4155db0c0b054ddc32",
+                    "name": "view",
+                    "selector": "#count > yt-view-count-renderer > span.view-count.style-scope.yt-view-count-renderer",
+                    "host": "youtube.com",
+                    "configName": "youtube video views(youtube.com) level 1",
+                    "attr": "text",
+                    "dataType": "STRING"
+                },
+                {
+                    "id": "5b339a7c55db0c0b054ddc30",
+                    "name": "publishDate",
+                    "selector": "#upload-info > span",
+                    "host": "youtube.com",
+                    "configName": "video publishDate(youtube.com)",
+                    "attr": "text",
+                    "dataType": "STRING"
+                }
+            ]
+        },
+        {
+            "id": "5b339d2d55db0c0b054ddc33",
+            "name": "youtube.com-getfeed-level0",
+            "host": "youtube.com",
+            "currentLevel": 0,
+            "expectResultType": "ARRAY",
+            "mappings": [
+                {
+                    "id": "5b339ba455db0c0b054ddc31",
+                    "name": "title",
+                    "selector": "#video-title",
+                    "host": "youtube.com",
+                    "configName": "youtube video title (youtube.com) level 0",
+                    "attr": "text",
+                    "dataType": "STRING"
+                },
+                {
+                    "id": "5b3399fb55db0c0b054ddc2f",
+                    "name": "url",
+                    "selector": "#thumbnail",
+                    "host": "youtube.com",
+                    "configName": "video url(youtube.com)",
+                    "attr": "abs:href",
+                    "dataType": "STRING"
+                },
+                {
+                    "id": "5b33998f55db0c0b054ddc2e",
+                    "name": "duration",
+                    "selector": "#thumbnail #overlays span",
+                    "host": "youtube.com",
+                    "configName": "youtube video duration level 0",
+                    "attr": "text",
+                    "dataType": "STRING"
+                }
+            ]
+        }
+    ],
+    "targetGroups": []
+}
