@@ -37,35 +37,18 @@ spring:
             enabled: false # we use Webpack dev server + BrowserSync for livereload
     jackson:
         serialization.indent_output: true
-    cloud:
-        stream:
-            kafka:
-                streams:
-                    binder:
-                        configuration:
-                            commit:
-                                interval:
-                                    ms: 1000
 
-                bindings:
-                    output:
-                        producer:
-                          configuration:
-                            max:
-                              block:
-                                ms: 5000
-                binder:
-                    brokers: 140.203.155.14
-                    zk-nodes: 140.203.155.14
 
-            bindings:
-                singleOutput:
-                    contentType: application/json
-                messageChannel:
-                    destination: crawl
-                    content-type: application/json
-                subscribableChannel:
-                    destination: crawl
+    cloud.stream.kafka.streams.binder.configuration.commit.interval.ms: 1000
+    cloud.stream.kafka.bindings.output.producer.configuration.max.block.ms: 5000
+    cloud.stream.kafka.binder.brokers: 140.203.155.14
+    cloud.stream.kafka.binder.zk-nodes: 140.203.155.14
+    cloud.stream.bindings.singleOutput.contentType: application/json
+    cloud.stream.bindings.messageChannel.destination: crawl
+    cloud.stream.bindings.messageChannel.content-type: application/json
+    cloud.stream.bindings.subscribableChannel.destination: crawl
+
+
     data:
         mongodb:
             uri: mongodb://140.203.155.14:27018
