@@ -3,7 +3,6 @@ package io.github.crawlerbot.models;
 import io.github.crawlerbot.domain.enumeration.BrowserOS;
 import io.github.crawlerbot.domain.enumeration.MessageAction;
 import io.github.crawlerbot.domain.enumeration.MessageObject;
-import io.github.crawlerbot.messaging.MessagePayLoad;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
