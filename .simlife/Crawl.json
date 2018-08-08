@@ -1,0 +1,36 @@
+{
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "content",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "browserOS",
+            "fieldType": "BrowserOS",
+            "fieldValues": "UBUNTU,MAC,WINDOWS"
+        },
+        {
+            "fieldName": "messageObject",
+            "fieldType": "MessageObject",
+            "fieldValues": "CHANNEL,CRAWLLINE",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "messageAction",
+            "fieldType": "MessageAction",
+            "fieldValues": "INNIT_CRAWL,CRAWL_LINE,INDEX"
+        }
+    ],
+    "dto": "no",
+    "searchEngine": "elasticsearch",
+    "service": "serviceImpl",
+    "entityTableName": "crawl",
+    "jpaMetamodelFiltering": false,
+    "pagination": "infinite-scroll",
+    "microserviceName": "CrawlerWorker"
+}

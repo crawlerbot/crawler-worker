@@ -20,46 +20,13 @@ public class ConsumerService {
 
     private final Logger log = LoggerFactory.getLogger(ConsumerService.class);
 
-    @Autowired
-    private CommandLiner commandLiner;
-
-
+    private final CommandLiner commandLiner;
+    public ConsumerService(CommandLiner commandLiner) {
+        this.commandLiner = commandLiner;
+    }
     // listen channel comming
     @StreamListener(ConsumerChannel.CHANNEL)
     public void consume(MessagePayLoad messagePayLoad) {
-
-        log.info("start Received message.....");
-        log.info("Received message: {}.", messagePayLoad.getMessage());
-
-        if (messagePayLoad.getMessageAction().equals(MessageAction.INNIT_CRAWL)) {
-            Channel channel = new FileStoreService().convertStringToChannel(messagePayLoad.getMessage());
-            try {
-                Crawler crawler = new Crawler(channel, commandLiner);
-                crawler.config(Crawler.BrowserName.CHROME, Crawler.BrowserHost.LOCAL, messagePayLoad.getBrowserOS()).start();
-
-            } catch (NotSupportBrowserException e) {
-                e.printStackTrace();
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            }
-        }
-        if (messagePayLoad.getMessageAction().equals(MessageAction.CRAWL_LINE)) {
-            log.info("Crawlline......");
-            try {
-                CrawlLine crawlLine = DataTransformer.readFromString(messagePayLoad.getMessage());
-                Crawler crawler = new Crawler(crawlLine, commandLiner);
-                crawler.config(Crawler.BrowserName.CHROME, Crawler.BrowserHost.LOCAL, messagePayLoad.getBrowserOS()).start();
-            } catch (NotSupportBrowserException e) {
-                e.printStackTrace();
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            }
-        }
-        if (messagePayLoad.getMessageAction().equals(MessageAction.INDEX)) {
-            log.info("Crawler Indexing Action");
-        }
+        commandLiner.consume(messagePayLoad);
     }
-
-    // listen crawline comming
-    // implement here
 }
