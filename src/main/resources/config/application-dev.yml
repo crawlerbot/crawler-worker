@@ -68,7 +68,7 @@ spring:
                     destination: greetings
     data:
         mongodb:
-            uri: mongodb://140.203.155.14:27017
+            uri: mongodb://140.203.155.14:27018
             database: CrawlerWorker
         elasticsearch:
             cluster-name: elasticsearch
