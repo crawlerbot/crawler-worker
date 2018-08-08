@@ -68,8 +68,7 @@ public class CrawlResource {
         messagePayLoad.setMessage(result.getContent());
         messagePayLoad.setBrowserOS(result.getBrowserOS());
         messagePayLoad.setMessageAction(result.getMessageAction());
-        commandLiner.consume(messagePayLoad);
-
+        commandLiner.crawl(messagePayLoad);
         return ResponseEntity.created(new URI("/api/crawls/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
             .body(result);

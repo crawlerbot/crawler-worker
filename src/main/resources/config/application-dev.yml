@@ -62,10 +62,10 @@ spring:
                 singleOutput:
                     contentType: application/json
                 messageChannel:
-                    destination: greetings
+                    destination: crawl
                     content-type: application/json
                 subscribableChannel:
-                    destination: greetings
+                    destination: crawl
     data:
         mongodb:
             uri: mongodb://140.203.155.14:27018
