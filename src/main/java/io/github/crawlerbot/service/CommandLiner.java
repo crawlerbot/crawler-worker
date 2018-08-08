@@ -113,7 +113,7 @@ public class CommandLiner {
         MessagePayLoad messagePayLoad = new MessagePayLoad();
         messagePayLoad.setMessage(messageBody);
         // need to be reractor
-        messagePayLoad.setBrowserOS(messagePayLoad.getBrowserOS());
+        messagePayLoad.setBrowserOS(nextInput.getBrowserOS());
         messagePayLoad.setMessageAction(MessageAction.CRAWL_LINE);
         messagePayLoad.setMessageObject(MessageObject.CRAWLLINE);
         channel.send(MessageBuilder.withPayload(messagePayLoad).build());

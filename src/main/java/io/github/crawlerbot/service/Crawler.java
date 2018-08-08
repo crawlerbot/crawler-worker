@@ -38,7 +38,6 @@ public class Crawler implements CrawlerEngine {
     private BrowserHost browserHost;
     private BrowserOS browserOS;
     private CrawlerResult crawlerResult;
-
     private CommandLiner commandLiner;
 
     public Crawler(Channel channel, CommandLiner commandLiner) {
@@ -106,6 +105,7 @@ public class Crawler implements CrawlerEngine {
             browser = new RemoteWebDriver(new URL(CrawlerConfiguration.REMOTE_BROWSER_URL), chromeCapabilities);
         }
         this.browser = browser;
+
 
         logger.info("[] config browser: {}", this.toString());
         return this;
@@ -440,7 +440,11 @@ public class Crawler implements CrawlerEngine {
             List<HashMap<String, List<String>>> splitData = new ArrayList<>();
             splitData.add(data);
             nextInput.setData(splitData);
+
+            nextInput.setBrowserOS(this.browserOS);
+
             nextInputs.add(nextInput);
+
             return nextInputs;
         } catch (Exception ex) {
             return nextInputs;

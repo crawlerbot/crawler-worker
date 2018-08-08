@@ -1,5 +1,9 @@
 package io.github.crawlerbot.models;
 
+import io.github.crawlerbot.domain.enumeration.BrowserOS;
+import io.github.crawlerbot.domain.enumeration.MessageAction;
+import io.github.crawlerbot.domain.enumeration.MessageObject;
+import io.github.crawlerbot.messaging.MessagePayLoad;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -18,6 +22,45 @@ public class CrawlLine implements Serializable {
     private Channel channel;
     List<HashMap<String, List<String>>> data = new ArrayList<>();
     private String fileUrl;
+
+    private String message;
+    private MessageObject messageObject;
+    private MessageAction messageAction;
+    private BrowserOS browserOS;
+
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public MessageObject getMessageObject() {
+        return messageObject;
+    }
+
+    public void setMessageObject(MessageObject messageObject) {
+        this.messageObject = messageObject;
+    }
+
+    public MessageAction getMessageAction() {
+        return messageAction;
+    }
+
+    public void setMessageAction(MessageAction messageAction) {
+        this.messageAction = messageAction;
+    }
+
+    public BrowserOS getBrowserOS() {
+        return browserOS;
+    }
+
+    public void setBrowserOS(BrowserOS browserOS) {
+        this.browserOS = browserOS;
+    }
+
     public String getId() {
         return id;
     }
