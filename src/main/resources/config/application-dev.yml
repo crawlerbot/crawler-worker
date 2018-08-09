@@ -43,10 +43,17 @@ spring:
     cloud.stream.kafka.bindings.output.producer.configuration.max.block.ms: 5000
     cloud.stream.kafka.binder.brokers: 140.203.155.14
     cloud.stream.kafka.binder.zk-nodes: 140.203.155.14
-    cloud.stream.bindings.singleOutput.contentType: application/json
-    cloud.stream.bindings.messageChannel.destination: crawl
-    cloud.stream.bindings.messageChannel.content-type: application/json
-    cloud.stream.bindings.subscribableChannel.destination: crawl
+#    cloud.stream.bindings.singleOutput.contentType: application/json
+#    cloud.stream.bindings.messageChannel.destination: crawl
+#    cloud.stream.bindings.messageChannel.content-type: application/json
+#    cloud.stream.bindings.subscribableChannel.destination: crawl
+    cloud.stream.bindings.crawler-in.destination: crawler-in
+    cloud.stream.bindings.crawler-next.destination: crawler-next
+    cloud.stream.bindings.indexing-out.destination: indexing-out
+
+    cloud.stream.bindings.crawler-in.contentType: application/json
+    cloud.stream.bindings.crawler-next.contentType: application/json
+    cloud.stream.bindings.indexing-out.contentType: application/json
 
 
     data:

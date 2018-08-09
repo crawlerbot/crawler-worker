@@ -5,6 +5,7 @@ import io.github.crawlerbot.domain.enumeration.BrowserOS;
 import io.github.crawlerbot.enumerations.Action;
 import io.github.crawlerbot.enumerations.SeleniumActionGetContent;
 import io.github.crawlerbot.exceptions.NotSupportBrowserException;
+import io.github.crawlerbot.messaging.CrawlerService;
 import io.github.crawlerbot.models.*;
 import org.joda.time.DateTimeUtils;
 import org.jsoup.Jsoup;
@@ -38,9 +39,9 @@ public class Crawler implements CrawlerEngine {
     private BrowserHost browserHost;
     private BrowserOS browserOS;
     private CrawlerResult crawlerResult;
-    private CommandLiner commandLiner;
+    private CrawlerService crawlerService;
 
-    public Crawler(Channel channel, CommandLiner commandLiner) {
+    public Crawler(Channel channel, CrawlerService crawlerService) {
         this.channel = channel;
 
         Link link = new Link();
@@ -53,17 +54,17 @@ public class Crawler implements CrawlerEngine {
 
         this.link = link;
         this.input = crawlLine;
-        this.commandLiner = commandLiner;
+        this.crawlerService = crawlerService;
 
         logger.info("[] config crawler: {}", this.toString());
 
     }
 
-    public Crawler(CrawlLine crawlLine, CommandLiner commandLiner) {
+    public Crawler(CrawlLine crawlLine, CrawlerService crawlerService) {
         this.input = crawlLine;
         this.channel = crawlLine.getChannel();
         this.link = crawlLine.getLink();
-        this.commandLiner = commandLiner;
+        this.crawlerService = crawlerService;
         logger.info("[] config crawler: {}", this.toString());
 
     }
@@ -153,7 +154,7 @@ public class Crawler implements CrawlerEngine {
             ", browserName=" + browserName +
             ", browserHost=" + browserHost +
             ", crawlerResult=" + crawlerResult +
-            ", commandLiner=" + commandLiner +
+            ", crawlerService=" + crawlerService +
             ", browser=" + browser +
             '}';
     }
@@ -399,7 +400,8 @@ public class Crawler implements CrawlerEngine {
         FileStoreService.writeLocalFile(fileName, crawlLine);
         Integer currentLevel = crawlLine.getLink().getCurrentLevel();
         if (currentLevel + 1 == crawlLine.getChannel().getArchiveLevel()) {
-            // send to queue index data
+            // send to queue index data to another service here
+            crawlerService.sendToIndexing(crawlLine);
         }
         return this;
     }
@@ -536,9 +538,10 @@ public class Crawler implements CrawlerEngine {
             }
             String resultFileName = "next_link_" + id;
             FileStoreService.writeLocalFile(resultFileName, nextInput);
-            if (commandLiner != null) {
+            if (crawlerService != null) {
                 logger.info("[] send  next link to queue from: {}", from);
-                commandLiner.sendNextCrawlLine(nextInput);
+                //commandLiner.sendNextCrawlLine(nextInput);
+                crawlerService.startCrawlNextLink(nextInput);
                 from++;
             }
         }

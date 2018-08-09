@@ -2,6 +2,7 @@ package io.github.crawlerbot.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import io.github.crawlerbot.domain.Crawl;
+import io.github.crawlerbot.messaging.CrawlerService;
 import io.github.crawlerbot.messaging.MessagePayLoad;
 import io.github.crawlerbot.service.CommandLiner;
 import io.github.crawlerbot.service.CrawlService;
@@ -11,6 +12,7 @@ import io.github.crawlerbot.web.rest.util.PaginationUtil;
 import io.github.simlife.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
@@ -43,6 +45,9 @@ public class CrawlResource {
 
     private final CommandLiner commandLiner;
 
+    @Autowired
+    private CrawlerService crawlerService;
+
     public CrawlResource(CrawlService crawlService, CommandLiner commandLiner) {
         this.crawlService = crawlService;
         this.commandLiner = commandLiner;
@@ -69,7 +74,8 @@ public class CrawlResource {
         messagePayLoad.setBrowserOS(result.getBrowserOS());
         messagePayLoad.setMessageAction(result.getMessageAction());
         messagePayLoad.setMessageObject(result.getMessageObject());
-        commandLiner.crawl(messagePayLoad);
+
+        crawlerService.startCrawl(messagePayLoad);
         return ResponseEntity.created(new URI("/api/crawls/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
             .body(result);
